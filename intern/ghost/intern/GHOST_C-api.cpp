@@ -323,7 +323,7 @@ GHOST_TSuccess GHOST_SetCustomCursorShape(GHOST_WindowHandle windowhandle,
                                           int sizey,
                                           int hotX,
                                           int hotY,
-                                          uint8_t canInvertColor)
+                                          bool canInvertColor)
 {
   GHOST_IWindow *window = (GHOST_IWindow *)windowhandle;
 
@@ -420,7 +420,7 @@ void GHOST_setNDOFDeadZone(float deadzone)
 }
 #endif
 
-void GHOST_setAcceptDragOperation(GHOST_WindowHandle windowhandle, int8_t canAccept)
+void GHOST_setAcceptDragOperation(GHOST_WindowHandle windowhandle, bool canAccept)
 {
   GHOST_IWindow *window = (GHOST_IWindow *)windowhandle;
 
@@ -615,7 +615,7 @@ GHOST_TSuccess GHOST_SetWindowState(GHOST_WindowHandle windowhandle, GHOST_TWind
 }
 
 GHOST_TSuccess GHOST_SetWindowModifiedState(GHOST_WindowHandle windowhandle,
-                                            uint8_t isUnsavedChanges)
+                                            bool isUnsavedChanges)
 {
   GHOST_IWindow *window = (GHOST_IWindow *)windowhandle;
 
@@ -823,13 +823,13 @@ GHOST_TSuccess GHOST_ClipRectangle(GHOST_RectangleHandle rectanglehandle,
   return result;
 }
 
-char *GHOST_getClipboard(int selection)
+char *GHOST_getClipboard(bool selection)
 {
   GHOST_ISystem *system = GHOST_ISystem::getSystem();
   return system->getClipboard(selection);
 }
 
-void GHOST_putClipboard(char *buffer, int selection)
+void GHOST_putClipboard(char *buffer, bool selection)
 {
   GHOST_ISystem *system = GHOST_ISystem::getSystem();
   system->putClipboard(buffer, selection);
@@ -874,7 +874,7 @@ void GHOST_BeginIME(GHOST_WindowHandle windowhandle,
                     int32_t y,
                     int32_t w,
                     int32_t h,
-                    int complete)
+                    bool complete)
 {
   GHOST_IWindow *window = (GHOST_IWindow *)windowhandle;
   window->beginIME(x, y, w, h, complete);

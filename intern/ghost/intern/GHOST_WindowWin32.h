@@ -323,7 +323,7 @@ class GHOST_WindowWin32 : public GHOST_Window {
     return &m_imeInput;
   }
 
-  void beginIME(int32_t x, int32_t y, int32_t w, int32_t h, int completed);
+  void beginIME(int32_t x, int32_t y, int32_t w, int32_t h, bool completed);
 
   void endIME();
 #endif /* WITH_INPUT_IME */

@@ -366,7 +366,7 @@ extern GHOST_TSuccess GHOST_SetCustomCursorShape(GHOST_WindowHandle windowhandle
                                                  int sizey,
                                                  int hotX,
                                                  int hotY,
-                                                 uint8_t canInvertColor);
+                                                 bool canInvertColor);
 
 /**
  * Returns the visibility state of the cursor.
@@ -467,7 +467,7 @@ extern void GHOST_setNDOFDeadZone(float deadzone);
 /**
  * Tells if the ongoing drag'n'drop object can be accepted upon mouse drop
  */
-extern void GHOST_setAcceptDragOperation(GHOST_WindowHandle windowhandle, int8_t canAccept);
+extern void GHOST_setAcceptDragOperation(GHOST_WindowHandle windowhandle, bool canAccept);
 
 /**
  * Returns the event type.
@@ -667,7 +667,7 @@ extern GHOST_TSuccess GHOST_SetWindowState(GHOST_WindowHandle windowhandle,
  * \return Indication of success.
  */
 extern GHOST_TSuccess GHOST_SetWindowModifiedState(GHOST_WindowHandle windowhandle,
-                                                   uint8_t isUnsavedChanges);
+                                                   bool isUnsavedChanges);
 
 /**
  * Sets the order of the window (bottom, top).
@@ -903,14 +903,14 @@ extern GHOST_TSuccess GHOST_ClipRectangle(GHOST_RectangleHandle rectanglehandle,
  * \param selection: Boolean to return the selection instead, X11 only feature.
  * \return clipboard data
  */
-extern char *GHOST_getClipboard(int selection);
+extern char *GHOST_getClipboard(bool selection);
 
 /**
  * Put data to the Clipboard
  * \param buffer: the string buffer to set.
  * \param selection: Set the selection instead, X11 only feature.
  */
-extern void GHOST_putClipboard(char *buffer, int selection);
+extern void GHOST_putClipboard(char *buffer, bool selection);
 
 /**
  * Toggles console
@@ -961,7 +961,7 @@ extern void GHOST_BeginIME(GHOST_WindowHandle windowhandle,
                            int32_t y,
                            int32_t w,
                            int32_t h,
-                           int complete);
+                           bool complete);
 /**
  * Disable the IME attached to the given window, i.e. prohibits any user-input
  * events from being dispatched to the IME.

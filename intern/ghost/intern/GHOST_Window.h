@@ -299,7 +299,7 @@ class GHOST_Window : public GHOST_IWindow {
 
 #ifdef WITH_INPUT_IME
   virtual void beginIME(
-      int32_t x, int32_t y, int32_t w, int32_t h, int completed)
+      int32_t x, int32_t y, int32_t w, int32_t h, bool completed)
   {
     /* do nothing temporarily if not in windows */
   }

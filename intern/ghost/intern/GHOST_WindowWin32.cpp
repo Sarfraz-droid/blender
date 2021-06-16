@@ -1112,9 +1112,9 @@ GHOST_TSuccess GHOST_WindowWin32::endProgressBar()
 
 #ifdef WITH_INPUT_IME
 void GHOST_WindowWin32::beginIME(
-    int32_t x, int32_t y, int32_t w, int32_t h, int completed)
+    int32_t x, int32_t y, int32_t w, int32_t h, bool completed)
 {
-  m_imeInput.BeginIME(m_hWnd, GHOST_Rect(x, y - h, x, y), (bool)completed);
+  m_imeInput.BeginIME(m_hWnd, GHOST_Rect(x, y - h, x, y), completed);
 }
 
 void GHOST_WindowWin32::endIME()

@@ -349,7 +349,7 @@ class GHOST_IWindow {
    * - false: Move the IME windows to the given position without finishing it.
    */
   virtual void beginIME(
-      int32_t x, int32_t y, int32_t w, int32_t h, int completed) = 0;
+      int32_t x, int32_t y, int32_t w, int32_t h, bool completed) = 0;
 
   /**
    * Disable the IME attached to the given window, i.e. prohibits any user-input
