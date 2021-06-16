@@ -2002,7 +2002,7 @@ LRESULT WINAPI GHOST_SystemWin32::s_wndProc(HWND hwnd, UINT msg, WPARAM wParam, 
   return lResult;
 }
 
-uint8_t *GHOST_SystemWin32::getClipboard(bool selection) const
+char *GHOST_SystemWin32::getClipboard(bool selection) const
 {
   char *temp_buff;
 
@@ -2026,7 +2026,7 @@ uint8_t *GHOST_SystemWin32::getClipboard(bool selection) const
     GlobalUnlock(hData);
     CloseClipboard();
 
-    return (uint8_t *)temp_buff;
+    return temp_buff;
   }
   else if (IsClipboardFormatAvailable(CF_TEXT) && OpenClipboard(NULL)) {
     char *buffer;
@@ -2052,14 +2052,14 @@ uint8_t *GHOST_SystemWin32::getClipboard(bool selection) const
     GlobalUnlock(hData);
     CloseClipboard();
 
-    return (uint8_t *)temp_buff;
+    return temp_buff;
   }
   else {
     return NULL;
   }
 }
 
-void GHOST_SystemWin32::putClipboard(int8_t *buffer, bool selection) const
+void GHOST_SystemWin32::putClipboard(char *buffer, bool selection) const
 {
   if (selection) {
     return;

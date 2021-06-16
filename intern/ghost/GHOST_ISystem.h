@@ -431,12 +431,12 @@ class GHOST_ISystem {
    * \return "unsigned char" from X11 XA_CUT_BUFFER0 buffer
    *
    */
-  virtual uint8_t *getClipboard(bool selection) const = 0;
+  virtual char *getClipboard(bool selection) const = 0;
 
   /**
    * Put data to the Clipboard
    */
-  virtual void putClipboard(int8_t *buffer, bool selection) const = 0;
+  virtual void putClipboard(char *buffer, bool selection) const = 0;
 
   /***************************************************************************************
    * System Message Box.

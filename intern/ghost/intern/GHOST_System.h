@@ -308,14 +308,14 @@ class GHOST_System : public GHOST_ISystem {
    * \return Returns the clipboard data
    *
    */
-  virtual uint8_t *getClipboard(bool selection) const = 0;
+  virtual char *getClipboard(bool selection) const = 0;
 
   /**
    * Put data to the Clipboard
    * \param buffer: The buffer to copy to the clipboard.
    * \param selection: The clipboard to copy too only used on X11.
    */
-  virtual void putClipboard(int8_t *buffer, bool selection) const = 0;
+  virtual void putClipboard(char *buffer, bool selection) const = 0;
 
   /**
    * Show a system message box

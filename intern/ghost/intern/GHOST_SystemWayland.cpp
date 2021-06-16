@@ -1511,14 +1511,14 @@ GHOST_TSuccess GHOST_SystemWayland::getButtons(GHOST_Buttons &buttons) const
   return GHOST_kFailure;
 }
 
-uint8_t *GHOST_SystemWayland::getClipboard(bool /*selection*/) const
+char *GHOST_SystemWayland::getClipboard(bool /*selection*/) const
 {
-  uint8_t *clipboard = static_cast<uint8_t *>(malloc((selection.size() + 1)));
+  char *clipboard = static_cast<char *>(malloc((selection.size() + 1)));
   memcpy(clipboard, selection.data(), selection.size() + 1);
   return clipboard;
 }
 
-void GHOST_SystemWayland::putClipboard(int8_t *buffer, bool /*selection*/) const
+void GHOST_SystemWayland::putClipboard(char *buffer, bool /*selection*/) const
 {
   if (!d->data_device_manager || d->inputs.empty()) {
     return;

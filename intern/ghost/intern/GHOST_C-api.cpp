@@ -823,13 +823,13 @@ GHOST_TSuccess GHOST_ClipRectangle(GHOST_RectangleHandle rectanglehandle,
   return result;
 }
 
-uint8_t *GHOST_getClipboard(int selection)
+char *GHOST_getClipboard(int selection)
 {
   GHOST_ISystem *system = GHOST_ISystem::getSystem();
   return system->getClipboard(selection);
 }
 
-void GHOST_putClipboard(int8_t *buffer, int selection)
+void GHOST_putClipboard(char *buffer, int selection)
 {
   GHOST_ISystem *system = GHOST_ISystem::getSystem();
   system->putClipboard(buffer, selection);

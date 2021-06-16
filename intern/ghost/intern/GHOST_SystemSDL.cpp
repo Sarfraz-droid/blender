@@ -743,12 +743,12 @@ GHOST_TSuccess GHOST_SystemSDL::getButtons(GHOST_Buttons &buttons) const
   return GHOST_kSuccess;
 }
 
-uint8_t *GHOST_SystemSDL::getClipboard(bool selection) const
+char *GHOST_SystemSDL::getClipboard(bool selection) const
 {
-  return (uint8_t *)SDL_GetClipboardText();
+  return (char *)SDL_GetClipboardText();
 }
 
-void GHOST_SystemSDL::putClipboard(int8_t *buffer, bool selection) const
+void GHOST_SystemSDL::putClipboard(char *buffer, bool selection) const
 {
   SDL_SetClipboardText(buffer);
 }

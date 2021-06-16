@@ -903,14 +903,14 @@ extern GHOST_TSuccess GHOST_ClipRectangle(GHOST_RectangleHandle rectanglehandle,
  * \param selection: Boolean to return the selection instead, X11 only feature.
  * \return clipboard data
  */
-extern uint8_t *GHOST_getClipboard(int selection);
+extern char *GHOST_getClipboard(int selection);
 
 /**
  * Put data to the Clipboard
  * \param buffer: the string buffer to set.
  * \param selection: Set the selection instead, X11 only feature.
  */
-extern void GHOST_putClipboard(int8_t *buffer, int selection);
+extern void GHOST_putClipboard(char *buffer, int selection);
 
 /**
  * Toggles console

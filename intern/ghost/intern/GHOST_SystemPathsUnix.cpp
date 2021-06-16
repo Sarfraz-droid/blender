@@ -55,18 +55,18 @@ GHOST_SystemPathsUnix::~GHOST_SystemPathsUnix()
 {
 }
 
-const uint8_t *GHOST_SystemPathsUnix::getSystemDir(int, const char *versionstr) const
+const char *GHOST_SystemPathsUnix::getSystemDir(int, const char *versionstr) const
 {
   /* no prefix assumes a portable build which only uses bundled scripts */
   if (static_path) {
     static string system_path = string(static_path) + "/blender/" + versionstr;
-    return (uint8_t *)system_path.c_str();
+    return system_path.c_str();
   }
 
   return NULL;
 }
 
-const uint8_t *GHOST_SystemPathsUnix::getUserDir(int version, const char *versionstr) const
+const char *GHOST_SystemPathsUnix::getUserDir(int version, const char *versionstr) const
 {
   static string user_path = "";
   static int last_version = 0;
@@ -107,11 +107,11 @@ const uint8_t *GHOST_SystemPathsUnix::getUserDir(int version, const char *versio
       }
     }
 
-    return (const uint8_t *)user_path.c_str();
+    return user_path.c_str();
   }
 }
 
-const uint8_t *GHOST_SystemPathsUnix::getUserSpecialDir(GHOST_TUserSpecialDirTypes type) const
+const char *GHOST_SystemPathsUnix::getUserSpecialDir(GHOST_TUserSpecialDirTypes type) const
 {
   const char *type_str;
 
@@ -164,10 +164,10 @@ const uint8_t *GHOST_SystemPathsUnix::getUserSpecialDir(GHOST_TUserSpecialDirTyp
   }
 
   path = path_stream.str();
-  return path[0] ? (const uint8_t *)path.c_str() : NULL;
+  return path[0] ? path.c_str() : NULL;
 }
 
-const uint8_t *GHOST_SystemPathsUnix::getBinaryDir() const
+const char *GHOST_SystemPathsUnix::getBinaryDir() const
 {
   return NULL;
 }

@@ -38,7 +38,7 @@ GHOST_SystemPathsWin32::~GHOST_SystemPathsWin32()
 {
 }
 
-const uint8_t *GHOST_SystemPathsWin32::getSystemDir(int, const char *versionstr) const
+const char *GHOST_SystemPathsWin32::getSystemDir(int, const char *versionstr) const
 {
   /* 1 utf-16 might translate into 3 utf-8. 2 utf-16 translates into 4 utf-8. */
   static char knownpath[MAX_PATH * 3 + 128] = {0};
@@ -52,13 +52,13 @@ const uint8_t *GHOST_SystemPathsWin32::getSystemDir(int, const char *versionstr)
     CoTaskMemFree(knownpath_16);
     strcat(knownpath, "\\Blender Foundation\\Blender\\");
     strcat(knownpath, versionstr);
-    return (uint8_t *)knownpath;
+    return knownpath;
   }
 
   return NULL;
 }
 
-const uint8_t *GHOST_SystemPathsWin32::getUserDir(int, const char *versionstr) const
+const char *GHOST_SystemPathsWin32::getUserDir(int, const char *versionstr) const
 {
   static char knownpath[MAX_PATH * 3 + 128] = {0};
   PWSTR knownpath_16 = NULL;
@@ -71,13 +71,13 @@ const uint8_t *GHOST_SystemPathsWin32::getUserDir(int, const char *versionstr) c
     CoTaskMemFree(knownpath_16);
     strcat(knownpath, "\\Blender Foundation\\Blender\\");
     strcat(knownpath, versionstr);
-    return (uint8_t *)knownpath;
+    return knownpath;
   }
 
   return NULL;
 }
 
-const uint8_t *GHOST_SystemPathsWin32::getUserSpecialDir(GHOST_TUserSpecialDirTypes type) const
+const char *GHOST_SystemPathsWin32::getUserSpecialDir(GHOST_TUserSpecialDirTypes type) const
 {
   GUID folderid;
 
@@ -114,21 +114,21 @@ const uint8_t *GHOST_SystemPathsWin32::getUserSpecialDir(GHOST_TUserSpecialDirTy
   if (hResult == S_OK) {
     conv_utf_16_to_8(knownpath_16, knownpath, MAX_PATH * 3);
     CoTaskMemFree(knownpath_16);
-    return (uint8_t *)knownpath;
+    return knownpath;
   }
 
   CoTaskMemFree(knownpath_16);
   return NULL;
 }
 
-const uint8_t *GHOST_SystemPathsWin32::getBinaryDir() const
+const char *GHOST_SystemPathsWin32::getBinaryDir() const
 {
   static char fullname[MAX_PATH * 3] = {0};
   wchar_t fullname_16[MAX_PATH * 3];
 
   if (GetModuleFileNameW(0, fullname_16, MAX_PATH)) {
     conv_utf_16_to_8(fullname_16, fullname, MAX_PATH * 3);
-    return (uint8_t *)fullname;
+    return fullname;
   }
 
   return NULL;

@@ -222,14 +222,14 @@ class GHOST_SystemX11 : public GHOST_System {
    * \param selection: Get selection, X11 only feature.
    * \return Returns the Clipboard indicated by Flag.
    */
-  uint8_t *getClipboard(bool selection) const;
+  char *getClipboard(bool selection) const;
 
   /**
    * Puts buffer to system clipboard
    * \param buffer: The buffer to copy to the clipboard.
    * \param selection: Set the selection into the clipboard, X11 only feature.
    */
-  void putClipboard(int8_t *buffer, bool selection) const;
+  void putClipboard(char *buffer, bool selection) const;
 
   /**
    * Show a system message box

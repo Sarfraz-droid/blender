@@ -52,11 +52,11 @@ class GHOST_SystemNULL : public GHOST_System {
   {
     return GHOST_kSuccess;
   }
-  uint8_t *getClipboard(bool selection) const
+  char *getClipboard(bool selection) const
   {
     return NULL;
   }
-  void putClipboard(int8_t *buffer, bool selection) const
+  void putClipboard(char *buffer, bool selection) const
   { /* nop */
   }
   uint64_t getMilliSeconds() const

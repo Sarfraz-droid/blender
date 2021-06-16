@@ -222,14 +222,14 @@ class GHOST_SystemWin32 : public GHOST_System {
    * \param selection: Used by X11 only.
    * \return Returns the Clipboard.
    */
-  uint8_t *getClipboard(bool selection) const;
+  char *getClipboard(bool selection) const;
 
   /**
    * Puts buffer to system clipboard.
    * \param selection: Used by X11 only.
    * \return No return.
    */
-  void putClipboard(int8_t *buffer, bool selection) const;
+  void putClipboard(char *buffer, bool selection) const;
 
   /**
    * Show a system message box
