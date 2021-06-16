@@ -2143,7 +2143,7 @@ char *GHOST_SystemX11::getClipboard(bool selection) const
   Window owner;
 
   /* from xclip.c doOut() v0.11 */
-  unsigned char *sel_buf;
+  char *sel_buf;
   unsigned long sel_len = 0;
   XEvent evt;
   unsigned int context = XCLIB_XCOUT_NONE;
@@ -2162,13 +2162,13 @@ char *GHOST_SystemX11::getClipboard(bool selection) const
   owner = XGetSelectionOwner(m_display, sseln);
   if (owner == win) {
     if (sseln == m_atom.CLIPBOARD) {
-      sel_buf = (unsigned char *)malloc(strlen(txt_cut_buffer) + 1);
-      strcpy((char *)sel_buf, txt_cut_buffer);
+      sel_buf = (char *)malloc(strlen(txt_cut_buffer) + 1);
+      strcpy(sel_buf, txt_cut_buffer);
       return sel_buf;
     }
     else {
-      sel_buf = (unsigned char *)malloc(strlen(txt_select_buffer) + 1);
-      strcpy((char *)sel_buf, txt_select_buffer);
+      sel_buf = (char *)malloc(strlen(txt_select_buffer) + 1);
+      strcpy(sel_buf, txt_select_buffer);
       return sel_buf;
     }
   }
@@ -2228,8 +2228,8 @@ char *GHOST_SystemX11::getClipboard(bool selection) const
 
   if (sel_len) {
     /* Only print the buffer out, and free it, if it's not empty. */
-    unsigned char *tmp_data = (unsigned char *)malloc(sel_len + 1);
-    memcpy((char *)tmp_data, (char *)sel_buf, sel_len);
+    char *tmp_data = (char *)malloc(sel_len + 1);
+    memcpy(tmp_data, (char *)sel_buf, sel_len);
     tmp_data[sel_len] = '\0';
 
     if (sseln == m_atom.STRING)

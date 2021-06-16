@@ -86,7 +86,7 @@ const char *GHOST_SystemPathsUnix::getUserDir(int version, const char *versionst
         return NULL;
       }
     }
-    return (uint8_t *)user_path.c_str();
+    return user_path.c_str();
   }
   else {
     if (user_path.empty() || last_version != version) {
